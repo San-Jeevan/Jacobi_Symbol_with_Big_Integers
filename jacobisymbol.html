@@ -1,0 +1,107 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Hash calc</title>
+
+<script language="JavaScript" type="text/javascript" src="jsbn/jsbn.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsbn/jsbn2.js"></script>
+
+
+
+<script language="JavaScript">
+
+
+
+function jacobi(a){
+  var b = new Object(); b[0] = 1; b[1] = 1; b[2] = 1; 
+  var sign = a[0];
+  var m = a[1];
+  var n = a[2];
+  if( sign > 0 ) console.log("("+m.toString()+"/"+n.toString()+") = ");
+  if( sign < 0 ) console.log("-("+m.toString()+"/"+n.toString()+") = ");
+  if( m > n.subtract(BigInteger.ONE) ) {
+    m = m.divideAndRemainder(n)[1];
+    if( sign > 0 ) console.log("("+m.toString()+"/"+n.toString()+") = ");
+    if( sign < 0 ) console.log("-("+m.toString()+"/"+n.toString()+") = ");
+  }
+   m = m.divideAndRemainder(n)[1];
+  if( m == 0 ){
+    console.log("0");
+    return 0;
+  }
+  if( m == 1 ) {
+    if( sign > 0 ) { console.log("1"); return 1; }
+    console.log("-1"); return -1;
+  }
+  var J2n = BigInteger.ONE;
+  if( (3 == (n.divideAndRemainder(new BigInteger("8"))[1])) || (5 == (n.divideAndRemainder(new BigInteger("8"))[1])) ) J2n = BigInteger.ONE.negate();
+  if( 0 == (m.divideAndRemainder(new BigInteger("2"))[1]) ) {
+    b[0] = sign.multiply(J2n);
+    b[1] = m.divide(new BigInteger("2"));
+    b[2] = n;
+    return jacobi(b);
+  }
+  if( (3 == (n.divideAndRemainder(new BigInteger("4"))[1])) && (3 == (m.divideAndRemainder(new BigInteger("4"))[1])) ) {
+    b[0] = sign.negate();
+    b[1] = n.divideAndRemainder(m)[1];
+    b[2] = m;
+    return jacobi(b);
+  } else { 
+    b[0] = sign;
+    b[1] = n.divideAndRemainder(m)[1];
+    b[2] = m;
+    return jacobi(b); 
+  }
+}
+
+
+function calculate_jacobi() {
+	var a = document.getElementById("a").value;
+	var p = document.getElementById("p").value;
+	var input = new Object(); input[0] = BigInteger.ONE; input[1] = new BigInteger(a); input[2] = new BigInteger(p);
+
+	document.getElementById("res").value = jacobi(a);
+	
+	
+	}
+
+
+
+
+
+		
+</script>
+</head>
+
+<body >
+<h1>Jacobi symbol with Big Integers</h1>
+<p>&nbsp;</p>
+<p>The Jacobi symbol is a generalization of the Legendre symbol. Introduced by Jacobi in 1837,[1] it is of theoretical interest in modular arithmetic and other branches of number theory, but its main use is in computational number theory, especially primality testing and integer factorization; these in turn are important in cryptography.<br>
+  <br>
+<img src="file:///C|/Users/Jeevan/Downloads/themeforest-2836238-clean-slide-responsive-vcard-html-template/mainfiles/personal/jacobi.png" width="624" height="83"></p>
+<p>&nbsp;</p>
+<p>There were no other javascript implementation of Jacobi symbol calculations with Big Integers. There was one made by <a href="http://math.fau.edu/richman/jacobi.htm" target="_new">&quot;richmann&quot;</a> but it only supported small integers (max 7 numbers long)</p>
+<p>So this is my implementation of Jacobi Symbol for large numbers. Javascript is not able to deal with big integers so I had to use Tom Wus JSBN library.</p>
+<p>
+  <label for="a">a</label>
+  <input type="text" name="a" id="a">
+</p>
+<p>p
+  <input type="text" name="p" id="p">
+</p>
+<p>
+  <input type="submit" onClick="calculate_jacobi();" name="btn_eval" id="btn_eval" value="Evaluate the jacobi symbol">
+</p>
+<p>
+  <label for="res"></label>
+  <input type="text" name="res" id="res"> 
+  (outputs either 1 or -1, check your browsers javascript console for the full calculation)
+* if it outputs 0 it means the p is not odd</p>
+<p><em>Jeevan Sivagnanasuntharam<br>
+Sanjeevan@outlook.com<br>
+07.03.2013
+<br>
+Questions are welcome :)
+</em></p>
+</body>
+</html>
