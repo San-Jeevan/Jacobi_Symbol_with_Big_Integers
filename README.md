@@ -11,6 +11,7 @@ The Jacobi symbol is a generalization of the Legendre symbol. Introduced by Jaco
 
 
 ![My image](https://raw.github.com/San-Jeevan/Jacobi_Symbol_with_Big_Integers/master/jacobi2.png)
+
 ![My image](https://raw.github.com/San-Jeevan/Jacobi_Symbol_with_Big_Integers/master/jacobi.png)
 
 
