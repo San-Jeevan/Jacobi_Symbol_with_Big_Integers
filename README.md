@@ -1,7 +1,7 @@
-Jacobi_Symbol_with_Big_Integers
+Jacobi Symbol with Big Integers
 ===============================
 
-
+sanjeevan@outlook.com
 
 DEMO: http://htmlpreview.github.com/?https://github.com/Sangeepan/Jacobi_Symbol_with_Big_Integers/blob/master/jacobisymbol.html
 
