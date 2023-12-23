@@ -3,7 +3,7 @@ Jacobi Symbol with Big Integers
 
 sanjeevan@outlook.com
 
-DEMO: http://htmlpreview.github.com/?https://github.com/San-Jeevan/Jacobi_Symbol_with_Big_Integers/blob/master/jacobisymbol.html
+DEMO: https://htmlpreview.github.io/?https://github.com/San-Jeevan/Jacobi_Symbol_with_Big_Integers/blob/master/jacobisymbol.html
 
 
 The Jacobi symbol is a generalization of the Legendre symbol. Introduced by Jacobi in 1837,[1] it is of theoretical interest in modular arithmetic and other branches of number theory, but its main use is in computational number theory, especially primality testing and integer factorization; these in turn are important in cryptography.
